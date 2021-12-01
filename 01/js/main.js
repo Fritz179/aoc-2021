@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const file = fs.readFileSync('./input.txt', 'utf8')
+const file = fs.readFileSync('../input.txt', 'utf8')
 const inputs = file.split('\n').map(n => Number(n))
 
 
