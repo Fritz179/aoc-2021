@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
   printf("Input file: %s\n", argv[1]);
 
-  int number;
+  int number = 0;
   FILE *file = fopen(argv[1], "r");
 
   while (fscanf(file, "%d", &number) == 1) {
@@ -19,33 +19,37 @@ int main(int argc, char *argv[]) {
 
 
   // Problema 1
-  int count1 = 0;
+  {
+    int count = 0;
 
-  for (int i = 1; i < xs_size; i++) {
-    int prev = xs[i - 1];
-    int curr = xs[i];
+    for (int i = 1; i < xs_size; i++) {
+      int prev = xs[i - 1];
+      int curr = xs[i];
 
-    if (curr > prev) {
-      count1++;
+      if (curr > prev) {
+        count++;
+      }
     }
-  }
 
-  printf("\nCount 1: %d", count1);
+    printf("\nCount 1: %d", count);
+  }
 
 
   // Problema 2
-  int count2 = 0;
+  {
+    int count = 0;
 
-  for (int i = 1; i < xs_size - 2; i++) {
-    int prev = xs[i - 1] + xs[i] + xs[i + 1];
-    int curr = xs[i] + xs[i + 1] + xs[i + 2];
+    for (int i = 1; i < xs_size - 2; i++) {
+      int prev = xs[i - 1] + xs[i] + xs[i + 1];
+      int curr = xs[i] + xs[i + 1] + xs[i + 2];
 
-    if (curr > prev) {
-      count2++;
+      if (curr > prev) {
+        count++;
+      }
     }
-  }
 
-  printf("\nCount 2: %d", count2);
+    printf("\nCount 2: %d", count);
+  }
 
   fclose(file);
 
