@@ -61,8 +61,7 @@ function checkWin(borad) {
         if (pos.num == number) {
           pos.marked = true
 
-          const won = checkWin(board)
-          if (won) {
+          if (checkWin(board)) {
             let sum = 0
             for (calc of board) {
               if (!calc.marked) {
