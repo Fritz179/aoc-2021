@@ -4,24 +4,22 @@ const {join} = require('path')
 const file = fs.readFileSync(join(__dirname, '../input.txt'), 'utf8')
 const inputs = file.split(',').map(n => Number(n))
 
-const hashes = {}
-function afterDays(start, days) {
-  const hash = `${start}_${days}`
-
-  if (!hashes[hash]) {
+const hashes = []
+function afterDays(days) {
+  if (!hashes[days]) {
     let count = 1 // itself
 
-    let nextReproduction = days - start
+    let nextReproduction = days - 8
 
     while (nextReproduction > 0) {
-      count += afterDays(8, nextReproduction - 1)
+      count += afterDays(nextReproduction - 1)
       nextReproduction -= 7
     }
 
-    hashes[hash] = count
+    hashes[days] = count
   }
 
-  return hashes[hash]
+  return hashes[days]
 }
 
 // Problem 1
@@ -29,7 +27,8 @@ function afterDays(start, days) {
   let count = 0
 
   inputs.forEach(fish => {
-    count += afterDays(fish, 80)
+    // 8 - fish = the day that they were born
+    count += afterDays(80 + 8 - fish)
   })
 
   console.log(`Answer 1: ${count}`);
@@ -41,7 +40,8 @@ function afterDays(start, days) {
   let count = 0
 
   inputs.forEach(fish => {
-    count += afterDays(fish, 256)
+    // 8 - fish = the day that they were born
+    count += afterDays(256 + 8 - fish)
   })
 
   console.log(`Answer 1: ${count}`);
