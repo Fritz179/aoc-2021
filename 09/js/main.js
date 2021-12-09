@@ -15,7 +15,6 @@ function isLower(y, x) {
   if (x < w - 1 && floor[y][x + 1] <= tile) return false // right
   if (y < h - 1 && floor[y + 1][x] <= tile) return false // bottom
 
-
   return true
 }
 

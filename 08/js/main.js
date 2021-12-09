@@ -47,9 +47,6 @@ const inputs = file.split('\n').slice(0, -1).map(line => line.split(' | ').map(l
       if (el.length == 7) eight = el
     })
 
-    // top segment
-    const top = seven.split('').filter(seg => !one.includes(seg))
-
     // l part of number 4
     const l = four.split('').filter(seg => !one.includes(seg))
 
@@ -76,24 +73,24 @@ const inputs = file.split('\n').slice(0, -1).map(line => line.split(' | ').map(l
       }
     })
 
-    let lineAnswer = ''
+    let mul = 1000
     outs.forEach(out => {
       switch (out) {
-        case zero:  lineAnswer += '0'; break;
-        case one:   lineAnswer += '1'; break;
-        case two:   lineAnswer += '2'; break;
-        case three: lineAnswer += '3'; break;
-        case four:  lineAnswer += '4'; break;
-        case five:  lineAnswer += '5'; break;
-        case six:   lineAnswer += '6'; break;
-        case seven: lineAnswer += '7'; break;
-        case eight: lineAnswer += '8'; break;
-        case nine:  lineAnswer += '9'; break;
+        case zero:  answer += 0 * mul; break;
+        case one:   answer += 1 * mul; break;
+        case two:   answer += 2 * mul; break;
+        case three: answer += 3 * mul; break;
+        case four:  answer += 4 * mul; break;
+        case five:  answer += 5 * mul; break;
+        case six:   answer += 6 * mul; break;
+        case seven: answer += 7 * mul; break;
+        case eight: answer += 8 * mul; break;
+        case nine:  answer += 9 * mul; break;
         default: console.log('Unreachable', out, outs);
       }
-    })
 
-    answer += Number(lineAnswer)
+      mul /= 10
+    })
   })
 
   console.log(`Answer 2: ${answer}`);
